@@ -1,0 +1,16 @@
+# PYTHON 3
+
+n=int(input())
+l=list(map(int,input().split(' ')))
+l.sort(reverse=True)
+s=0
+for i in range(n):
+    s=s+((2**i)*l[i])
+print(s)
+ 
+
+INPUT: 4
+		7 4 9 6
+
+OUTPUT: 79
+
