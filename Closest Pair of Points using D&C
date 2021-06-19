@@ -1,0 +1,42 @@
+#PYTHON 3
+
+def merge(a):
+    if len(a)>1:
+        mid = len(a)//2
+        l = a[:mid]
+        r = a[mid:]
+        merge(l)
+        merge(r)
+        
+        i,j,k=0,0,0
+        while i < len(l) and j < len(r):
+            if l[i] < r[j]:
+                a[k] = l[i]
+                i += 1
+            else:
+                a[k] = r[j]
+            j += 1
+            k += 1
+        if i>mid:
+            while j< len(r):
+                a[k] = r[j]
+                j += 1
+                k += 1
+        else:
+            while i < len(l):
+                a[k] = l[i]
+                i += 1
+                k += 1
+a=list(map(int,input().split(' ')))
+b=[0]*len(a)
+merge(a)
+print(a,a[1]-a[0])
+                                    
+       
+INPUT: 2 3 12 30 40 50 5 1 15 10 3 4
+OUPUT: [1, 2, 3, 12, 3, 4, 12, 30, 40, 50, 3, 4]
+1                                  
+
+                                    
+                                    
+                                 
