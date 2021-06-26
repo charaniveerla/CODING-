@@ -18,7 +18,7 @@ Output:
  Edge 5:(4, 6) cost:9  
  Minimum cost= 26 NO   
 
-#PYHTON
+#PYHTON 3
 
 def find(i):
     while parent[i] != i:
