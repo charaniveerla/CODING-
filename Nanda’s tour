@@ -1,0 +1,23 @@
+Q.
+Nanda decides to go to a tour. So he himself prepared a map and he started from the city where he lives in, determine the lengths of the shortest paths from the starting city to all other cities in the map. If a city is unreachable, its distance is -1. Cities will be numbered consecutively as from and to, and edges will have varying distances or lengths.
+ Sample-Input: 
+Enter no. of cities:5  
+Enter the cost matrix:
+ 0 3 4 0 0
+ 3 0 5 6 2
+ 4 5 0 0 0 
+0 6 0 0 0
+ 0 2 0 0 0
+ Enter the starting city:3
+ Sample-Output: 
+Distance of node0=9 
+Path=0<-1<-3 
+Distance of node1=6 
+Path=1<-3 
+Distance of node2=11 
+Path=2<-1<-3 
+Distance of node4=8 
+Path=4<-1<-3  
+
+
+#PTYHON 3
