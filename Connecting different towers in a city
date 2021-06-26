@@ -1,0 +1,131 @@
+Q.
+A plan is built to connect different towers in a city using cables of some lengths. The lengths of cables are given
+. You should modify the plan such that usage of cable length is minimum.
+Your first task is to print the total length of cables used to connect all towers (use Kruskal’s algorithm). A tower is said to be terminal tower when it is connected with only one other tower. Print “YES” if there is only one tower between any two terminal towers, otherwise print “NO”. 
+ 
+ 
+In the above spanning-tree A, D, F are terminal towers and the answer is “NO”
+because there are more than one tower between any two terminal towers.
+ 
+https://www.geeksforgeeks.org/kruskals-algorithm-simple-implementation-foradjacency-matrix/
+
+Output:
+ Edge 0:(0, 2) cost:1 
+ Edge 1:(2, 4) cost:2 
+ Edge 2:(2, 3) cost:3 
+ Edge 3:(0, 1) cost:5 
+ Edge 4:(1, 5) cost:6 
+ Edge 5:(4, 6) cost:9  
+ Minimum cost= 26 NO   
+
+#PYHTON
+
+def find(i):
+    while parent[i] != i:
+        i = parent[i]
+    return i
+
+    a = find(i)
+    b = find(j)
+    parent[a] = b
+def kruskalMST(cost):
+    mincost = 0
+    for i in range(V):
+        parent[i] = i
+    edge_count = 0
+    while edge_count < V - 1:
+        min = INF
+        a = -1
+        b = -1
+        for i in range(V):
+            for j in range(V):
+                if find(i) != find(j) and cost[i][j] < min:
+                    min = cost[i][j]
+                    a = i
+                    b = j
+
+        union(a, b)
+        print('Edge {}:({}, {}) cost:{}'.format(edge_count, a, b, min))
+        edge_count += 1
+        mincost += min
+    print("Minimum cost= {}".format(mincost))
+    
+    
+def union(i, j):
+    a = find(i)
+    b = find(j)
+    parent[a] = b
+
+V = 5
+parent = [i for i in range(V)]
+INF = float('inf')
+cost = [[INF, 2, INF, 6, INF],
+        [2, INF, 3, 8, 5],
+        [INF, 3, INF, INF, 7],
+        [6, 8, INF, INF, 9],
+        [INF, 5, 7, 9, INF]]
+
+kruskalMST(cost)    
+    def find(i):
+    while parent[i] != i:
+        i = parent[i]
+    return i
+
+    a = find(i)
+    b = find(j)
+    parent[a] = b
+def kruskalMST(cost):
+    mincost = 0
+    for i in range(V):
+        parent[i] = i
+    edge_count = 0
+    while edge_count < V - 1:
+        min = INF
+        a = -1
+        b = -1
+        for i in range(V):
+            for j in range(V):
+                if find(i) != find(j) and cost[i][j] < min:
+                    min = cost[i][j]
+                    a = i
+                    b = j
+
+        union(a, b)
+        print('Edge {}:({}, {}) cost:{}'.format(edge_count, a, b, min))
+        edge_count += 1
+        mincost += min
+    print("Minimum cost= {}".format(mincost))
+    
+    
+def union(i, j):
+    a = find(i)
+    b = find(j)
+    parent[a] = b
+
+V = 5
+parent = [i for i in range(V)]
+INF = float('inf')
+cost = [[INF, 2, INF, 6, INF],
+        [2, INF, 3, 8, 5],
+        [INF, 3, INF, INF, 7],
+        [6, 8, INF, INF, 9],
+        [INF, 5, 7, 9, INF]]
+
+kruskalMST(cost)    
+
+
+OUTPUT:
+EDGE 1: (1, 2) COST:3
+EDGE 1: (1, 4) COST:5 
+EDGE 1: (0, 3) COST:6
+minimum cost= 16
+ 
+  
+
+    
+    
+    
+    
+    
+   
+    
