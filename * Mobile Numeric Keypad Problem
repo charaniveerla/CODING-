@@ -23,7 +23,6 @@ col = [0, -1, 0, 1, 0]
 def getCountUtil(keypad, i, j, n):
     if (keypad == None or n <= 0):
         return 0
- 
     if (n == 1):
         return 1
     k = 0
@@ -38,9 +37,8 @@ def getCountUtil(keypad, i, j, n):
                 keypad[ro][co] != '*' and keypad[ro][co] != '#'):
             totalCount += getCountUtil(keypad, ro, co, n - 1)
     return totalCount
- 
-def getCount(keypad, n):
-     
+    
+def getCount(keypad, n):     
     if (keypad == None or n <= 0):
         return 0
     if (n == 1):
@@ -60,6 +58,7 @@ keypad = [['1', '2', '3'],
           ['*', '0', '#']]
 n=int(input())
 print("Count for numbers of length ",n,":",getCount(keypad, n));
+
 
 INPUT:
  
