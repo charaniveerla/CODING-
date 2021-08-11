@@ -17,34 +17,25 @@ Output:  6 7 1
 
 #PYTHON 3
 
-class meeting:
-    def __init__(self, start, end, pos):
-        self.start = start
-        self.end = end
-        self.pos = pos
-def maxMeeting(l, n):   
-    ans = []
-    l.sort(key = lambda x: x.end)
-    ans.append(l[0].pos)
-    time_limit = l[0].end
-    for i in range(1, n):
-        if l[i].start > time_limit:
-            ans.append(l[i].pos)
-            time_limit = l[i].end
-    for i in ans:
-        print(i + 1, end =" ")
-        print()
-        
-if __name__ == '__main__':
-    s = [ 1, 3, 0, 5, 8, 5 ]
-    f = [ 2, 4, 6, 7, 9, 9 ]
-    n = len(s)
-    l = []
-    for i in range(n):
-        l.append(meeting(s[i], f[i], i))
-    maxMeeting(l, n)
- 
+s=list(map(int,input().split())) 
+f=list(map(int,input().split())) 
+start=0 
+end=0 
+if(len(s)==len(f)): 
+    for i in range(0,len(s)): 
+        if(s[i] > start and f[i]>end): 
+            print(s[i],f[i]) 
+            start=s[i] 
+            end=f[i]
 
-OUTPUT: 2
-4
-5
+ 
+INPUT:
+1 3 0 5 8 5
+2 4 6 7 9 9
+
+OUTPUT: 
+1 2
+3 4
+5 7
+8 9
+
