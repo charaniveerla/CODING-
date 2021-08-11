@@ -8,37 +8,39 @@ of boards, say board {2, 3, 4} or only board {1} or nothing but not board {2, 4,
 
 #PYTHON 3
 
-
-def sum(arr, frm, to):
-    total = 0;
-    for i in range(frm, to + 1):
-        total += arr[i]
-    return total
-def partition(arr, n, k):
-    if k == 1: 
-        return sum(arr, 0, n - 1)
-    if n == 1: 
-        return arr[0]
-    b = 100000000 
-    for i in range(1, n + 1):
-        b = min(b,
-               max(partition(arr, i, k - 1),
-                         sum(arr, i, n - 1)))
-    return b    
-n=int(input())
-l= []
-for i in range(n):
-    l.append(int(input()))
-k =int(input())
-print(partition(l, n, k))
+def numberOfPainters(arr, n, maxLen): 
+    total = 0 
+    numPainters = 1 
+    for i in arr: 
+        total += i 
+        if (total > maxLen): 
+            total = i 
+            numPainters += 1 
+    return numPainters 
+def partition(arr, n, k): 
+    lo = max(arr) 
+    hi = sum(arr) 
+    while (lo < hi): 
+        mid = lo + (hi - lo) / 2 
+        requiredPainters = numberOfPainters(arr, n, mid) 
+        if (requiredPainters <= k): 
+            hi = mid 
+        else: 
+            lo = mid + 1 
+    return lo 
+arr = list(map(int,input().split()))
+n = len(arr) 
+k =int(input()) 
+print(int(partition(arr, n, k)))
 
 
 TESTCASES
 
-INPUT: K=2 A={10,10,10,10}
+INPUT: 10 10 10 10
+        2
 OUTPUT: 20
 
-INPUT: K=2 A={10,20,30,40}
+INPUT: 10 20 30 40
+        2
 OUTPUT: 60
-
 
