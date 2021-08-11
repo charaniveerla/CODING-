@@ -1,0 +1,84 @@
+Q.
+Yaaaay, haven’t you heard the news? Bakaloria results are out! And Reem had very good grades.  Finally, she can go to IT College and pursue her childhood dream of becoming a great programmer.  Reem is very excited about her college, she already started learning programming. Today she was  learning about a very well-known problem, the 8-Queens problem (you never saw that coming,  didn't you?) she has wrote a program to generate all the possible situations of the queens, but as a  novice programmer she found it hard to check whether if these situations are valid. As usual you  come to her rescue and offer to help with this hard task! Now you are stuck with this task: Given  the positions of 8 queens on a regular chess board, determine if this situation is valid. A valid  situation is a configuration of the 8 queens where no queen can strike any other queen. On a standard  8 × 8 chess board, a queen can strike any other queen on it's row, column, or two diagonals. 
+Input Format: 
+The first line of input has one integer T the number of test cases your program must process. Each of the next T lines contains the positions of 8 queens. A position of a queen is described  as one character [A - H] (the column of the queen), followed by one number [1 - 8] (the row of  the queen) 
+ For example: "A4" represents a queen at the first column and the fourth row. Output Format: 
+For each test case print one line containing the word Valid if the configuration is valid, or Invalid  otherwise. 
+Input: 
+2 
+A1 B5 C8 D6 E3 F7 G2 H4 
+C3 E4 C4 E1 C4 F4 A8 G6 
+Output: 
+Valid 
+Invalid
+
+
+
+#c++
+
+#include<bits/stdc++.h>
+using namespace std;
+struct P
+{
+int x,y;
+}He[100];
+char s[10];
+set<int>q1,q2;
+int main()
+{
+int t;
+cin>>t;
+while(t--)
+{
+for(int i=1;i<=8;i++)
+{
+cin>>s;
+He[i].x=s[0]-'A'+1;
+He[i].y=s[1]-'0';
+q1.insert(He[i].x);
+q2.insert(He[i].y);
+}
+if(q1.size()==q2.size()&&q1.size()==8)
+{
+int flag=0;
+for(int i=1;i<=8;i++)
+{
+for(int j=1;j<=8;j++)
+{
+if(i!=j)
+{
+if(abs(He[i].x-He[j].x)==abs(He[i].y-He[j].y))
+{
+flag=1;
+break;
+}
+}
+}
+}
+if(flag)
+{
+cout<<"Invalid"<<endl;
+}
+else
+{
+cout<<"Valid"<<endl;
+}
+}
+else
+{
+cout<<"Invalid"<<endl;
+}
+q1.clear(),q2.clear();
+}
+return 0;
+}
+
+
+OUTPUT:
+2
+A1 B5 C8 D6 E3 F7 G2 H4 
+VALID
+
+C3 E4 C4 E1 C4 F4 A8 G6 
+INVALID
+
