@@ -1,0 +1,53 @@
+Q.
+
+Hack the money 
+You are a bank account hacker. Initially you have 1 rupee in your account, and you want exactly N rupees  in your account. You wrote two hacks, First hack can multiply the amount of money you own by 10, while  the second can multiply it by 20. These hacks can be used any number of time . Can you achieve the desired  amount N using these hacks? 
+Constraints: 
+1<=T<=100 
+1<=N<=10^12 
+Input -> The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.The first and only line of each test case contains a single integer N.  
+Output ->For each test case, print a single line containing the string "Yes" if you can make exactly N  rupees or "No" otherwise. 
+
+
+#C++
+
+#include <iostream>
+using namespace std;
+typedef long long ll;
+bool solve(ll N, ll curr) {
+if (curr == N) return true;
+if (curr > N) return false;
+return solve(N, curr * 10) || solve(N, curr * 20);
+}
+int main() {
+ll t;
+cin >> t;
+while (t--) {
+ll n;
+cin >> n;
+
+if (n == 1) {
+cout << "Yes" << endl;
+} else {
+if (solve(n, 1))
+cout << "Yes" << endl;
+else
+cout << "No" << endl;
+}
+}
+return 0;
+}
+
+
+Input:  
+5 
+1 
+2 
+10 
+25 
+200 
+Output:  
+Yes 
+No 
+Yes 
+No 
