@@ -1,0 +1,35 @@
+Q.
+Probability of reaching a point with 2 or 3 steps at a time 
+A person starts walking from position X = 0, find the probability to reach exactly on X = N if she  can only take either 2 steps or 3 steps. Probability for step length 2 is given i.e. P, probability for  step length 3 is 1 – P. 
+Examples : 
+Input : N = 5, P = 0.20 
+Output : 0.32 
+Explanation :- 
+There are two ways to reach 5. 
+2+3 with probability = 0.2 * 0.8 = 0.16 
+3+2 with probability = 0.8 * 0.2 = 0.16 
+So, total probability = 0.32. 
+
+
+#PYTHON 3
+
+def find_prob(N, P) : 
+    dp =[0] * (n + 1) 
+    dp[0] = 1 
+    dp[1] = 0 
+    dp[2] = P 
+    dp[3] = 1 - P 
+    for i in range(4, N + 1) : 
+        dp[i] = (P) * dp[i - 2] + (1 - P) * dp[i - 3] 
+    return dp[N] 
+n = int(input()) 
+p = float(input()) 
+print(round(find_prob(n, p), 2))
+
+INPUT:
+N=5
+P=0.20
+OUTPUT:
+0.32
+
+
