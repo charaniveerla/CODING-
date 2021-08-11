@@ -162,4 +162,4 @@ if __name__ == '__main__':
 	for i in range(n1):
 		l1=list(map(input().split())
 		city1.append(l1)
-findcost(n1, city1)
+	findcost(n1, city1)
