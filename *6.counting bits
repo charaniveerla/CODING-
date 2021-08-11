@@ -1,0 +1,8 @@
+n=int(input())
+l=[]
+for i in range(n+1):
+	b=bin(i)
+	b=b.replace("0b",'')
+	o=b.count('1')
+	l.append(o)
+print(l)
