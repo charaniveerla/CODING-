@@ -1,0 +1,62 @@
+
+Q.
+Raju has got very less Marks in Dynamic programming test conducted by his teacher. So,  the teacher had given a problem about optimal Binary search Tree which should be solved  using Dynamic Programming by the next class. Since, he is very weak in Dynamic  programming you have to help him to solve the problem. The problem can be described as  follows: 
+An unsorted data of keys and their frequencies are given to you and some queries where  each query contains two integers which describe the Range of the indices (index range) for  which you have to print the root of that Optimal Binary search Tree.  
+Tasks: 
+(i)You should Find the Cost of the optimal BST by considering all the keys and print the  value in a new Line. 
+(ii)Find and print the root of the Optimal BST formed by the range of indices (keys index  range) given by each sub-query. The first line contains integer 'n' which describes the size  of the keys. The second line contains values of keys. The third Line contains values about  frequencies of each keys. The fourth Line is an integer 'm' which describes no of queries.  The following lines contains two integers describing the range for each query. Print the cost  Of the Optimal BST by considering all the keys. For each Query print the root of the Optimal  BST based on the given range 
+https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24/ 
+Sample-Input: 
+4 
+12 10 20 21 
+8 34 50 1 
+2 
+0 3 
+0 1 
+Sample-Output: 
+Cost of Optimal BST is 144 
+20 
+10
+
+
+
+
+
+#PYTHON
+
+INT_MAX = 2147483647
+def optimalSearchTree(keys, freq, n):
+    cost = [[0 for x in range(n)]
+        for y in range(n)]
+    for i in range(n):
+        cost[i][i] = freq[i]
+    for L in range(2, n + 1):
+        for i in range(n - L + 2):
+            j = i + L - 1
+            if i >= n or j >= n:
+                break
+            cost[i][j] = INT_MAX
+            for r in range(i, j + 1):
+                c = 0
+                if (r > i):
+                    c += cost[i][r - 1]
+                if (r < j):
+                    c += cost[r + 1][j]
+                c += sum(freq, i, j)
+                if (c < cost[i][j]):
+                    cost[i][j] = c
+    return cost[0][n - 1]
+def sum(freq, i, j):
+    s = 0
+    for k in range(i, j + 1):
+        s += freq[k]
+    return s
+if __name__ == '__main__':
+    keys = [10, 12, 20]
+    freq = [34, 8, 50]
+n = len(keys)
+print("Cost of Optimal BST is",optimalSearchTree(keys, freq,n))
+
+
+OUTPUT:
+Cost of Optimal BST is 142
